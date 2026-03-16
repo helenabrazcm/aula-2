@@ -1,99 +1,68 @@
-/* 1. RESET E CONFIGURAÇÕES GERAIS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body {
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Melhor que height: 100vh para evitar cortes em telas pequenas */
-    padding: 20px;
-}
+    <div class="container">
+        <form class="form-cadastro">
+            <h2>Criar Conta</h2>
+            <p>Preencha os dados abaixo para se cadastrar.</p>
 
-/* 2. CONTAINER PRINCIPAL */
-.container {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px; /* Aumentei levemente para acomodar a linha (row) lateral */
-}
+            <div class="input-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" placeholder="Digite seu nome" required>
+            </div>
 
-/* 3. CABEÇALHO DO FORMULÁRIO */
-.form-cadastro h2 {
-    margin-bottom: 0.5rem;
-    color: #333;
-    text-align: center;
-}
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
 
-.form-cadastro p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
+            <div class="row">
+                <div class="input-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
+                </div>
 
-/* 4. CAMPOS DE ENTRADA (INPUTS) */
-.input-group {
-    margin-bottom: 1.2rem;
-}
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+                </div>
+            </div>
 
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="Crie uma senha" required>
+            </div>
 
-.input-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
+            <button type="submit" class="btn-enviar">Cadastrar</button>
+        </form>
+    </div>
 
-.input-group input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
+    <script>
+        const cpf = document.getElementById('cpf');
+        const tel = document.getElementById('telefone');
 
-/* 5. BOTÃO DE ENVIO */
-.btn-enviar {
-    width: 100%;
-    padding: 0.9rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
+        cpf.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '');
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = v;
+        });
 
-.btn-enviar:hover {
-    background-color: #0056b3;
-}
+        tel.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '');
+            v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+            v = v.replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = v;
+        });
+    </script>
 
-/* 6. LAYOUT RESPONSIVO (CAMPOS LADO A LADO) */
-@media (min-width: 480px) {
-    .row {
-        display: flex;
-        gap: 15px;
-    }
-    
-    .row .input-group {
-        flex: 1;
-    }
-}
+</body>
+</html>
