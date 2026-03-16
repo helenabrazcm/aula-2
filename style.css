@@ -1,88 +1,79 @@
-:root {
-  /* Paleta de Cores e Variáveis */
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --text-main: #1f2937;
-  --text-muted: #6b7280;
-  --radius: 20px;
-  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-}
-
-/* Reset Moderno */
+/* Reset básico para remover margens padrão */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: var(--bg-gradient);
-  min-height: 100dvh; /* Dynamic Viewport Height para mobile */
-  display: grid;
-  place-items: center;
-  color: var(--text-main);
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Card com Glassmorphism */
-.card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px); /* Efeito de desfoque no fundo */
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 2.5rem;
-  width: min(90%, 350px); /* Responsivo sem Media Queries */
-  text-align: center;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
 
-.card:hover {
-  transform: scale(1.03);
+.form-cadastro h2 {
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-align: center;
 }
 
-/* Imagem com Máscara e Sombra suave */
-.profile-img {
-  width: 120px;
-  aspect-ratio: 1 / 1; /* Garante que seja sempre um quadrado perfeito */
-  border-radius: 50%;
-  object-fit: cover;
-  ring: 4px solid white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
+.form-cadastro p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 0.5rem;
+.input-group {
+    margin-bottom: 1.2rem;
 }
 
-p {
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-size: 0.95rem;
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 600;
 }
 
-/* Botão Moderno */
-.btn {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary);
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 12px;
-  width: 100%;
-  transition: all 0.2s ease;
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.btn:hover {
-  background-color: var(--primary-hover);
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+/* Efeito de foco no input */
+.input-group input:focus {
+    border-color: #007bff;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #0056b3;
 }
