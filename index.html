@@ -55,59 +55,5 @@
         <button class="btn-enviar" onclick="voltarFormulario()" style="background-color: #6c757d; margin-top: 20px;">Cadastrar Novo</button>
     </div>
 </div>
-
-const form = document.getElementById('cadastroForm');
-const sectionForm = document.getElementById('sectionForm');
-const sectionLista = document.getElementById('sectionLista');
-const tabelaCorpo = document.getElementById('tabelaCorpo');
-
-// Máscara de CPF
-document.getElementById('cpf').addEventListener('input', (e) => {
-    let v = e.target.value.replace(/\D/g, '');
-    v = v.replace(/(\d{3})(\d)/, '$1.$2');
-    v = v.replace(/(\d{3})(\d)/, '$1.$2');
-    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    e.target.value = v;
-});
-
-// Máscara de Telefone
-document.getElementById('telefone').addEventListener('input', (e) => {
-    let v = e.target.value.replace(/\D/g, '');
-    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-    v = v.replace(/(\d{5})(\d)/, '$1-$2');
-    e.target.value = v;
-});
-
-// Lógica de Submissão
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Impede a página de recarregar
-
-    // Pegar valores
-    const nome = document.getElementById('nome').value;
-    const cpf = document.getElementById('cpf').value;
-    const telefone = document.getElementById('telefone').value;
-
-    // Criar nova linha na tabela
-    const novaLinha = `
-        <tr>
-            <td>${nome}</td>
-            <td>${cpf}</td>
-            <td>${telefone}</td>
-        </tr>
-    `;
-    
-    tabelaCorpo.innerHTML += novaLinha;
-
-    // Trocar telas
-    sectionForm.style.display = 'none';
-    sectionLista.style.display = 'block';
-});
-
-// Função para voltar e cadastrar outro
-function voltarFormulario() {
-    form.reset(); // Limpa os campos
-    sectionForm.style.display = 'block';
-    sectionLista.style.display = 'none';
-}
 </body>
 </html>
