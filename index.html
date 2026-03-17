@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="container">
-    <form class="form-cadastro" id="cadastroForm">
-        <h2>Criar Conta</h2>
-        <p>Preencha os dados abaixo para se cadastrar.</p>
+<div class="container" id="mainContainer">
+    <div id="sectionForm">
+        <form class="form-cadastro" id="cadastroForm">
+            <h2>Criar Conta</h2>
+            <p>Preencha os dados abaixo para se cadastrar.</p>
 
             <div class="input-group">
                 <label for="nome">Nome Completo</label>
@@ -39,23 +39,21 @@
         </form>
     </div>
 
-    <script>
-
-        cpf.addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            v = v.replace(/(\d{3})(\d)/, '$1.$2');
-            v = v.replace(/(\d{3})(\d)/, '$1.$2');
-            v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            e.target.value = v;
-        });
-
-        tel.addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-            v = v.replace(/(\d{5})(\d)/, '$1-$2');
-            e.target.value = v;
-        });
-    </script>
-
+    <div id="sectionLista" class="lista-container" style="display: none;">
+        <h3>Usuários Cadastrados</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaCorpo">
+                </tbody>
+        </table>
+        <button class="btn-enviar" onclick="voltarFormulario()" style="background-color: #6c757d; margin-top: 20px;">Cadastrar Novo</button>
+    </div>
+</div>
 </body>
 </html>
