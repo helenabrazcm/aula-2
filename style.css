@@ -1,125 +1,168 @@
+/* 1. RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
 
-        /* CSS INTEGRADO */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Melhor que height: 100vh para evitar cortes em telas pequenas */
+    padding: 20px;
+}
 
-        body {
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+/* 2. CONTAINER PRINCIPAL */
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Aumentei levemente para acomodar a linha (row) lateral */
+}
 
-        .container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-            transition: max-width 0.4s ease;
-        }
+/* 3. CABEÇALHO DO FORMULÁRIO */
+.form-cadastro h2 {
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-align: center;
+}
 
-        /* Classe para expandir o card quando mostrar a tabela */
-        .container.expandir {
-            max-width: 650px;
-        }
+.form-cadastro p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
 
-        .hidden {
-            display: none !important;
-        }
+/* 4. CAMPOS DE ENTRADA (INPUTS) */
+.input-group {
+    margin-bottom: 1.2rem;
+}
 
-        h2, h3 {
-            margin-bottom: 0.5rem;
-            color: #333;
-            text-align: center;
-        }
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
 
-        p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
 
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
 
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
+/* 5. BOTÃO DE ENVIO */
+.btn-enviar {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
+.lista-container {
+    margin-top: 20px;
+    max-width: 600px; /* Um pouco mais largo para a tabela */
+}
 
-        .row {
-            display: flex;
-            gap: 15px;
-        }
+.lista-container h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
 
-        .row .input-group {
-            flex: 1;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
 
-        .btn-enviar {
-            width: 100%;
-            padding: 0.9rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        .btn-enviar:hover {
-            background-color: #0056b3;
-        }
+th {
+    background-color: #f8f9fa;
+    color: #555;
+}
 
-        .btn-voltar {
-            background-color: #6c757d;
-            margin-top: 20px;
-        }
+tr:hover {
+    background-color: #f1f1f1;
+}
 
-        /* Tabela */
-        .table-wrapper {
-            margin-top: 20px;
-            overflow-x: auto;
-        }
+.btn-enviar:hover {
+    background-color: #0056b3;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+/* 6. LAYOUT RESPONSIVO (CAMPOS LADO A LADO) */
+@media (min-width: 480px) {
+    .row {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .row .input-group {
+        flex: 1;
+    }
+}
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 0.9rem;
-        }
+/* Ajuste no container para permitir que ele cresça conforme a lista */
+.container {
+    max-width: 550px; /* Um pouco maior para acomodar a tabela melhor */
+    transition: max-width 0.3s ease;
+}
 
-        th {
-            background-color: #f8f9fa;
-            color: #888;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-        }
+.lista-container {
+    margin-top: 20px;
+    overflow-x: auto; /* Adiciona scroll horizontal se a tela for muito pequena */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #fafafa;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #888;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
